@@ -1,0 +1,364 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
+.custom__container
+	max-width: 990px
+	padding: 0 15px
+	margin: 0 auto
+	@media (max-width: 990px)
+		max-width: 794px
+	@media (max-width: 794px)
+		max-width: 603px
+	@media (max-width: 603px)
+		max-width: 412px
+	@media (max-width: 412px)
+		max-width: 100%
+
+
+ul
+	list-style: none
+	display: flex
+
+.breadcrumb
+	ul
+		padding-left: 0
+		@media (max-width: 412px)
+			flex-wrap: wrap
+	li
+		font-size: 13px
+		margin-top: 5px
+		color: #939ca2
+		padding-right: 15px
+		position: relative
+		a
+			color: #939ca2
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+		&::after
+			content: "-"
+			position: absolute
+			// position: relative
+			top: 0
+			right: 5px
+		&:last-of-type
+			&::after
+				content: ""
+		&:first-of-type
+			position: relative
+			// margin-left: 23px
+			padding-left: 23px
+			&:before
+				content: ""
+				// display: inline-block
+				// margin-right: 6px
+				// position: relative
+				position: absolute
+				top: 2px
+				left: 0
+				background-image: url(/img/breadcrumb.png)
+				background-repeat: no-repeat
+				background-position: center center
+				width: 16px
+				height: 17px
+				
+.catalog
+	margin-bottom: 50px
+	&__title
+		font-size: 28px
+		@media (max-width: 412px)
+			font-size: 22px
+	&__filter, &__pag
+		background-color: #eef8ff
+		border: 2px solid #e5f0fb
+		border-radius: 7px
+		display: flex
+		align-items: center
+		justify-content: space-between
+		padding: 10px 5px
+		font-size: 14px
+		flex-wrap: wrap
+		*
+			margin: 0
+			padding: 0
+		&-color, &-set, &-sort
+			@media (max-width: 990px)
+				display: flex
+				width: 100%
+				justify-content: center
+		&-color
+			display: flex
+			align-items: center
+			p
+				margin-right: 4px
+			input[type="radio"]
+				display: none
+				+ label
+					width: 17px
+					height: 17px
+					margin-left: 7px
+					display: block
+					border-radius: 50%
+					transition: 0.2s
+					&[data-color="red"]
+						background: red
+					&[data-color="black"]
+						background: black
+					&[data-color="yellow"]
+						background: yellow
+					&[data-color="white"]
+						background: white
+					&[data-color="green"]
+						background: green
+					&[data-color="magenta"]
+						background: magenta
+					&[data-color="orange"]
+						background: orange
+				&:checked + label
+					border: 2px double #fff;
+					box-shadow: 0px 0px 0px 2px rgba(255,0,0,1);
+		&-border
+			border: 1px solid #c2d1dc
+			height: 23px
+			margin: 0 auto
+			content: ""
+			@media (max-width: 990px)
+				display: none
+		&-set
+			ul
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+			input[type="radio"]
+				display: none
+				+ label
+					font-size: 14px
+					display: block
+					&:before
+						content: "\2714"
+						height: 18px
+						width: 18px
+						font-size: 0px
+						display: inline-block
+						border: 1px solid #bdcbd5
+						background-color: #d7e2ea
+						border-radius: 5px
+						margin-right: 6px
+						margin-left: 6px
+						line-height: 18px
+						text-align: center;
+						vertical-align: middle;
+				&:checked + label:before
+					font-size: 14px
+					border: 1px solid #c12524
+					background-color: #f73e3d
+					color: #fff
+		&-sort
+			min-width: 165px
+			label
+				color: red
+				border-bottom: 1px red dotted
+				&:hover
+					border-bottom: 1px solid transparent
+			input[type="checkbox"]
+				display: none
+				~ .down
+					color: red
+				&:checked ~ .up
+					color: red
+				&:checked ~ .down
+					color: black
+	&__item
+		&s
+			display: flex
+			flex-wrap: wrap
+			margin: 24px 0 30px
+			@media (max-width: 412px)
+				justify-content: center
+		border: 1px solid #d0dbe6
+		border-radius: 10px
+		padding: 14px 30px 15px
+		width: 191px
+		font-size: 14px
+		text-align: center
+		@media (max-width: 412px)
+			width: 100%
+		&-img
+			// width: 031px
+			height: 130px
+			display: block
+			img
+				object-fit: cover
+				width: auto
+				height: 100%
+		&-descriprion
+			font-size: 13px
+		&-price
+			font-size: 12px
+			span
+				font-weight: bold
+				font-size: 18px
+				text-transform: uppercase
+			&--old
+				color: #aaaaaa
+				text-transform: uppercase
+				position: relative
+				display: inline-block
+				font-size: 15px
+				&::after
+					content: ""
+					width: 120%
+					left: -10%
+					top: 40%
+					border-bottom: 2px solid red
+					position: absolute
+					transform: rotate(-15deg)
+		&-order
+			background-color: #eef8ff
+			padding: 5px
+			border-radius: 20px
+			width: 126px
+			position: relative
+			display: flex
+			height: 40px
+			margin: 0 auto
+			input
+				width: 61px
+				border-radius: 15px
+				border-color: #cacbcb
+				padding: 0 10px
+			.order-control
+				display: flex
+				flex-direction: column
+				justify-content: center
+				align-items: center
+				width: 20px
+				span
+					height: 19px
+					width: 20px
+					text-align: center
+					vertical-align: middle
+					font-size: 19px
+					line-height: 19px
+					font-family: 'Jazz-Ball-Regular'
+					cursor: pointer
+					color: #798690
+					transition: 1s
+					border: 1px solid transparent
+					&:hover
+						border: 1px solid #798690
+						border-radius: 5px
+
+		&-buybtn
+			background-image: url('../img/cart.png')
+			background-color: red
+			background-position: center center
+			width: 40px
+			height: 40px
+			border-radius: 50%
+			background-repeat: no-repeat
+			position: absolute
+			top: 0
+			right: 0
+			transition: 1s
+			cursor: pointer
+		&-order
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button
+				-webkit-appearance: none
+	&__pag
+		ul
+			width: 100%
+			display: flex
+			justify-content: center
+			position: relative
+			&:after
+				@media (max-width: 603px)
+					width: 100%
+					order: 1
+					content: ""
+			@media (max-width: 603px)
+				flex-wrap: wrap
+			a
+				color: #60666a
+				// text-decoration: underline
+				font-size: 14px
+				padding: 0 6px
+				position: relative
+				&:after
+					transition: .1s
+					content: ""
+					position: absolute
+					border-bottom: 1px solid #000
+					bottom: 0
+					left: 50%
+					width: calc(100% - 6px)
+					transform: translateX(-50%)
+				&:hover
+					text-decoration: none
+					&:after
+						width: 0%
+			li
+				order: 0
+				&:last-of-type,
+				&:first-of-type
+					position: absolute
+					&:before,&:after
+						font-family: "Jazz-Ball-Regular"
+					@media (max-width: 603px)
+						// top: 20px
+						position: static
+						order: 2
+						// width: 50%
+						display: inline-block
+				&:last-of-type
+					right: 18px
+					&:after
+						content: ">"
+				&:first-of-type
+					left: 18px
+					&:before
+						content: "<"
+				&.activ-page
+					font-weight: bold
+
+
+
+@import "media" // Always at the end
